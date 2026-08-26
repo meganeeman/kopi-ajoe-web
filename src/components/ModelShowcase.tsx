@@ -87,6 +87,7 @@ export default function ModelShowcase() {
                                 src={model.src}
                                 alt="Kopi Ajoe Model"
                                 fill
+                                sizes="(max-width: 768px) 300px, 450px"
                                 className="object-cover transition-transform duration-700 group-hover:scale-105 filter grayscale-[30%] group-hover:grayscale-0"
                             />
                             <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />

@@ -2,21 +2,20 @@
 
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useTexture, Environment, Float } from "@react-three/drei";
-import { useRef, useMemo } from "react";
+import { useRef, useMemo, useState, useEffect, MutableRefObject } from "react";
 import * as THREE from "three";
 import { cn } from "@/lib/utils";
 
-function Bean({ position, rotation, scale }: { position: [number, number, number]; rotation: [number, number, number]; scale: number }) {
+function Bean({ position, rotation, scale, activeRef }: { position: [number, number, number]; rotation: [number, number, number]; scale: number; activeRef: MutableRefObject<boolean> }) {
     const meshRef = useRef<THREE.Mesh>(null);
     // Load texture
     const texture = useTexture("/coffee_bean.png");
 
-    // Rotate slowly
+    // Rotate slowly (skipped when off-screen to save CPU)
     useFrame((state, delta) => {
-        if (meshRef.current) {
-            meshRef.current.rotation.x += delta * 0.2;
-            meshRef.current.rotation.y += delta * 0.3;
-        }
+        if (!activeRef.current || !meshRef.current) return;
+        meshRef.current.rotation.x += delta * 0.2;
+        meshRef.current.rotation.y += delta * 0.3;
     });
 
     return (
@@ -36,6 +35,19 @@ function Bean({ position, rotation, scale }: { position: [number, number, number
 }
 
 export default function Background3D({ className }: { className?: string }) {
+    const containerRef = useRef<HTMLDivElement>(null);
+    const activeRef = useRef(true);
+
+    useEffect(() => {
+        const el = containerRef.current;
+        if (!el) return;
+        const observer = new IntersectionObserver(
+            ([entry]) => { activeRef.current = entry.isIntersecting; },
+            { threshold: 0.01 }
+        );
+        observer.observe(el);
+        return () => observer.disconnect();
+    }, []);
 
     // Create an array of random positions for the beans
     const beans = useMemo(() => {
@@ -59,14 +71,14 @@ export default function Background3D({ className }: { className?: string }) {
     }, []);
 
     return (
-        <div className={cn("absolute inset-0 pointer-events-none", className)}>
+        <div ref={containerRef} className={cn("absolute inset-0 pointer-events-none", className)}>
             <Canvas camera={{ position: [0, 0, 10], fov: 45 }}>
                 <ambientLight intensity={0.5} />
                 <directionalLight position={[10, 10, 5]} intensity={1} />
                 <pointLight position={[-10, -10, -10]} color="orange" intensity={0.5} />
 
                 {beans.map((bean, i) => (
-                    <Bean key={i} {...bean} />
+                    <Bean key={i} {...bean} activeRef={activeRef} />
                 ))}
                 {/* Add environment for better reflections if desired, though standard material works well without */}
             </Canvas>

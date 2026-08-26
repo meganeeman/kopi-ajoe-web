@@ -2,7 +2,10 @@
 
 import { useScroll, useTransform, motion, MotionValue } from "framer-motion";
 import { useRef } from "react";
+import dynamic from "next/dynamic";
 import { cn } from "@/lib/utils";
+
+const Background3D = dynamic(() => import("./Background3D"), { ssr: false });
 
 const content = "Didirikan oleh Dede Saputra, Kopi Ajoe bermula dari mimpi sederhana untuk menghidupkan ekonomi kreatif. Kini, dengan ratusan armada sepeda listrik dan dukungan penuh petani lokal Sumatera Barat, kami mengolah kopi dari hulu hingga hilir. Setiap cangkir adalah buah kolaborasi yang memberdayakan, menyatukan kualitas rasa dengan misi sosial yang nyata.";
 
@@ -14,8 +17,6 @@ const Word = ({ children, range, progress }: { children: string; range: [number,
         </motion.span>
     );
 };
-
-import Background3D from "./Background3D";
 
 export default function About() {
     const container = useRef(null);

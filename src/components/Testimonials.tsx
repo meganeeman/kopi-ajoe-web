@@ -1,7 +1,7 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useState, useEffect, useRef } from "react";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 import { Quote } from "lucide-react";
 
 const press = [
@@ -24,16 +24,19 @@ const press = [
 
 export default function Testimonials() {
     const [current, setCurrent] = useState(0);
+    const sectionRef = useRef<HTMLDivElement>(null);
+    const inView = useInView(sectionRef, { margin: "0px" });
 
     useEffect(() => {
+        if (!inView) return;
         const timer = setInterval(() => {
             setCurrent((prev) => (prev + 1) % press.length);
         }, 5000);
         return () => clearInterval(timer);
-    }, []);
+    }, [inView]);
 
     return (
-        <section className="h-screen bg-zinc-950 text-white flex items-center justify-center relative overflow-hidden">
+        <section ref={sectionRef} className="h-screen bg-zinc-950 text-white flex items-center justify-center relative overflow-hidden">
             <div className="absolute top-10 left-10 text-neutral-800">
                 <Quote size={120} />
             </div>

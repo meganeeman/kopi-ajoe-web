@@ -67,41 +67,52 @@ export default function SequenceScroll() {
 
     useEffect(() => {
         const loadImages = async () => {
-            const promises = [];
+            const loadedImages: HTMLImageElement[] = new Array(frameCount);
             let loadedCount = 0;
+            let next = 1;
+            const concurrency = 6;
 
-            for (let i = 1; i <= frameCount; i++) {
-                promises.push(
-                    new Promise<HTMLImageElement>((resolve) => {
+            const worker = (): Promise<void> =>
+                new Promise((resolve) => {
+                    const run = () => {
+                        if (next > frameCount) {
+                            resolve();
+                            return;
+                        }
+                        const idx = next++;
                         const img = new Image();
-                        img.src = `/sequence/ezgif-frame-${i.toString().padStart(3, "0")}.jpg`;
-                        img.onload = () => {
+                        img.src = `/sequence/ezgif-frame-${idx.toString().padStart(3, "0")}.jpg`;
+                        img.onload = img.onerror = () => {
+                            loadedImages[idx - 1] = img;
                             loadedCount++;
                             setLoadingProgress((loadedCount / frameCount) * 100);
-                            resolve(img);
+                            run();
                         };
-                        img.onerror = () => {
-                            loadedCount++;
-                            setLoadingProgress((loadedCount / frameCount) * 100);
-                            resolve(img); // Handle error gracefully
-                        };
-                    })
-                );
-            }
-            const loadedImages = await Promise.all(promises);
+                    };
+                    run();
+                });
+
+            await Promise.all(Array.from({ length: concurrency }, worker));
             setImages(loadedImages);
             // Add a small delay so users see 100%
             setTimeout(() => setLoaded(true), 500);
         };
         loadImages();
 
-        // Handle Resize
+        // Handle Resize (debounced)
+        let resizeTimer: ReturnType<typeof setTimeout>;
         const handleResize = () => {
-            setCanvasSize({ width: window.innerWidth, height: window.innerHeight });
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(() => {
+                setCanvasSize({ width: window.innerWidth, height: window.innerHeight });
+            }, 200);
         };
         handleResize();
         window.addEventListener("resize", handleResize);
-        return () => window.removeEventListener("resize", handleResize);
+        return () => {
+            window.removeEventListener("resize", handleResize);
+            clearTimeout(resizeTimer);
+        };
     }, []);
 
     const render = (index: number) => {
