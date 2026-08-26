@@ -40,7 +40,7 @@ export default function Stats() {
                 {stats.map((stat, i) => (
                     <div key={i} className="flex flex-col">
                         <div className="text-6xl md:text-8xl font-bold tracking-tighter mb-2">
-                            {stat.text ? stat.text : <Counter value={stat.value} />}{stat.suffix}
+                            <Counter value={stat.value} />{stat.suffix}
                         </div>
                         <div className="text-neutral-500 uppercase tracking-widest text-sm">{stat.label}</div>
                     </div>
