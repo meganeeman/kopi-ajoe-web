@@ -4,10 +4,10 @@ import { useInView, animate, motion, useMotionValue, useTransform } from "framer
 import { useEffect, useRef } from "react";
 
 const stats = [
-    { label: "Years of Heritage", value: 45, suffix: "+" },
-    { label: "Varieties Sourced", value: 12, suffix: "" },
-    { label: "Cups Served", value: 15000, suffix: "+" },
-    { label: "Awards Won", value: 24, suffix: "" },
+    { label: "Team Members", value: 230, suffix: "+" },
+    { label: "Mobile Coffee Units", value: 200, suffix: "+" },
+    { label: "Coffee Beans / Month", value: 10, suffix: "T" },
+    { label: "Cities Reached", value: 7, suffix: "+" },
 ];
 
 const Counter = ({ value }: { value: number }) => {
@@ -40,7 +40,7 @@ export default function Stats() {
                 {stats.map((stat, i) => (
                     <div key={i} className="flex flex-col">
                         <div className="text-6xl md:text-8xl font-bold tracking-tighter mb-2">
-                            <Counter value={stat.value} />{stat.suffix}
+                            {stat.text ? stat.text : <Counter value={stat.value} />}{stat.suffix}
                         </div>
                         <div className="text-neutral-500 uppercase tracking-widest text-sm">{stat.label}</div>
                     </div>

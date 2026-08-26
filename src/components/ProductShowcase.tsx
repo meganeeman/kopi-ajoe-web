@@ -9,37 +9,37 @@ const products = [
     {
         id: 1,
         src: "/images/product/0a59bc1f-d762-4c86-b0d1-9c093c40353c.jpeg",
-        title: "Midnight Roast",
+        title: "Kopi Susu Butter",
         category: "Signature Series",
-        description: "Dark, bold, and unapologetically strong.",
+        description: "Karakter khas yang creamy dengan sentuhan butter yang kaya.",
     },
     {
         id: 2,
         src: "/images/product/8a93d9f2-b6f6-4334-a1d6-85d03af1c314.jpeg",
-        title: "Golden Hour",
-        category: "Premium Blend",
-        description: "A smooth awakening for the senses.",
+        title: "Kopi Susu Gula Aren",
+        category: "Fan Favorite",
+        description: "Seimbang, dengan manisnya gula aren asli Sumatera Barat.",
     },
     {
         id: 3,
         src: "/images/product/9e55483b-7fa3-45b8-9436-eb2140edd63b.jpeg",
-        title: "Urban Legend",
-        category: "Limited Edition",
-        description: "The taste of the city, refined.",
+        title: "Kopi Karamel",
+        category: "Sweet Series",
+        description: "Lembut dengan finishing karamel yang manis di akhir.",
     },
     {
         id: 4,
         src: "/images/product/b9571b8f-4e34-4e30-b247-37887ea65686.jpeg",
-        title: "Velvet Void",
-        category: "Espresso",
-        description: "Deep, rich, and infinitely smooth.",
+        title: "Kopi Susu Original",
+        category: "Classic",
+        description: "Cita rasa otentik Padang, simpel dan nikmat.",
     },
     {
         id: 5,
         src: "/images/product/d0c10c83-c0b2-4cd7-b7bb-3ac38c8f2aed.jpeg",
-        title: "Crimson Tide",
-        category: "Specialty",
-        description: "A wave of flavor that never settles.",
+        title: "Es Kopi Ajoe",
+        category: "Refreshing",
+        description: "Kopi dingin yang menghantar semangat di setiap tegukan.",
     },
 ];
 
@@ -127,11 +127,11 @@ export default function ProductShowcase() {
                     viewport={{ once: true }}
                     className="text-6xl md:text-9xl font-black text-center text-white/5 uppercase tracking-tighter"
                 >
-                    Collections
+                    Menu
                 </motion.h2>
                 <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
                     <h2 className="text-4xl md:text-6xl font-bold text-white uppercase tracking-tight text-center">
-                        Visual <span className="text-red-600">Taste</span>
+                        Racikan <span className="text-red-600">Ajoe</span>
                     </h2>
                 </div>
             </div>

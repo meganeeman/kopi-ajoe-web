@@ -2,37 +2,37 @@
 
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
-import { Coffee, Droplets, Mountain, Award } from "lucide-react";
+import { Coffee, Milk, Droplets, Bike } from "lucide-react";
 import Image from "next/image";
 
 const items = [
     {
-        title: "Single Origin",
-        description: "Sourced from the best micro-lots.",
+        title: "Kopi Susu Butter",
+        description: "A distinctive favorite with a rich, buttery character.",
         colSpan: "col-span-12 md:col-span-8",
-        image: "/images/single-origin.png",
-        icon: <Mountain className="w-10 h-10 mb-4 text-white/80 group-hover:text-white transition-colors relative z-20" />,
-    },
-    {
-        title: "Dark Roast",
-        description: "Bold, intense, and unforgettable.",
-        colSpan: "col-span-12 md:col-span-4",
-        image: "/images/dark-roast.png",
+        image: "/images/menu-butter.png",
         icon: <Coffee className="w-10 h-10 mb-4 text-white/80 group-hover:text-white transition-colors relative z-20" />,
     },
     {
-        title: "Sustainable",
-        description: "Ethically farmed and processed.",
+        title: "Kopi Susu Gula Aren",
+        description: "Balanced coffee with the sweetness of pure palm sugar.",
         colSpan: "col-span-12 md:col-span-4",
-        image: "/images/sustainable.png",
+        image: "/images/menu-gulaaren.png",
+        icon: <Milk className="w-10 h-10 mb-4 text-white/80 group-hover:text-white transition-colors relative z-20" />,
+    },
+    {
+        title: "Kopi Karamel",
+        description: "Smooth coffee with a sweet caramel finish.",
+        colSpan: "col-span-12 md:col-span-4",
+        image: "/images/menu-karamel.png",
         icon: <Droplets className="w-10 h-10 mb-4 text-white/80 group-hover:text-white transition-colors relative z-20" />,
     },
     {
-        title: "Award Winning",
-        description: "Recognized by global connoisseurs.",
+        title: "Coffee On The Move",
+        description: "Bringing Ajoe coffee closer to people, wherever they are.",
         colSpan: "col-span-12 md:col-span-8",
-        image: "/images/award-winning.png",
-        icon: <Award className="w-10 h-10 mb-4 text-white/80 group-hover:text-white transition-colors relative z-20" />,
+        image: "/images/menu-move.png",
+        icon: <Bike className="w-10 h-10 mb-4 text-white/80 group-hover:text-white transition-colors relative z-20" />,
     },
 ];
 
@@ -40,7 +40,7 @@ export default function BentoGrid() {
     return (
         <section className="min-h-screen bg-black text-white px-6 md:px-20 py-24 flex flex-col justify-center">
             <div className="mb-16">
-                <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-tighter">Our Signature</h2>
+                <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-tighter">What Makes Ajoe</h2>
             </div>
 
             <div className="grid grid-cols-12 gap-4 max-w-7xl mx-auto w-full">

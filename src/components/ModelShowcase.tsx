@@ -93,7 +93,6 @@ export default function ModelShowcase() {
 
                             <div className="absolute bottom-0 left-0 p-8 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                                 <p className="text-2xl font-serif italic text-white mb-2">"{model.quote}"</p>
-                                <p className="text-xs font-bold text-red-500 uppercase tracking-widest">{model.author}</p>
                             </div>
                         </div>
                     ))}

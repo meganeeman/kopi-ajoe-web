@@ -4,10 +4,22 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Quote } from "lucide-react";
 
-const testimonials = [
-    { text: "The most authentic dark roast I've ever tasted. Pure magic.", author: "James Hoffman" },
-    { text: "Kopi Ajoe redefines what coffee can be. Smooth, bold, and timeless.", author: "Coffee Monthly" },
-    { text: "A sensory journey in every cup. The heritage shines through.", author: "Sarah W." },
+const press = [
+    {
+        text: "Kopi Ajoe telah memiliki 230 karyawan dan sekitar 200 sepeda listrik yang tersebar di berbagai daerah di Sumatera Barat.",
+        source: "Padang Ekspres",
+        date: "27 Okt 2025",
+    },
+    {
+        text: "Kehadiran Kopi Ajoe di Kota Lubuk Linggau menjadi magnet baru bagi pecinta kopi.",
+        source: "Linggau Pos",
+        date: "06 Jul 2026",
+    },
+    {
+        text: "Kopi Ajoe resmi hadir di Pekanbaru, tawarkan cita rasa premium dari biji kopi pilihan.",
+        source: "Riau24",
+        date: "Jun 2025",
+    },
 ];
 
 export default function Testimonials() {
@@ -15,7 +27,7 @@ export default function Testimonials() {
 
     useEffect(() => {
         const timer = setInterval(() => {
-            setCurrent((prev) => (prev + 1) % testimonials.length);
+            setCurrent((prev) => (prev + 1) % press.length);
         }, 5000);
         return () => clearInterval(timer);
     }, []);
@@ -27,6 +39,9 @@ export default function Testimonials() {
             </div>
 
             <div className="max-w-5xl px-6 relative z-10 text-center">
+                <p className="text-xs font-bold uppercase tracking-[0.3em] text-red-500 mb-10">
+                    In The Press
+                </p>
                 <AnimatePresence mode="wait">
                     <motion.div
                         key={current}
@@ -35,18 +50,21 @@ export default function Testimonials() {
                         exit={{ opacity: 0, y: -50 }}
                         transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
                     >
-                        <h3 className="text-4xl md:text-6xl lg:text-7xl font-medium leading-tight mb-12">
-                            "{testimonials[current].text}"
+                        <h3 className="text-2xl md:text-4xl lg:text-5xl font-medium leading-tight mb-10">
+                            &ldquo;{press[current].text}&rdquo;
                         </h3>
-                        <p className="text-xl md:text-2xl text-neutral-400 uppercase tracking-widest">
-                            — {testimonials[current].author}
+                        <p className="text-lg md:text-xl text-neutral-400 uppercase tracking-widest">
+                            — {press[current].source}
+                        </p>
+                        <p className="text-sm text-neutral-600 mt-2 tracking-widest">
+                            {press[current].date}
                         </p>
                     </motion.div>
                 </AnimatePresence>
             </div>
 
             <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-4">
-                {testimonials.map((_, i) => (
+                {press.map((_, i) => (
                     <button
                         key={i}
                         onClick={() => setCurrent(i)}

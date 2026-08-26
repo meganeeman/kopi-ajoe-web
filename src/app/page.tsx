@@ -9,6 +9,8 @@ import ProductShowcase from "@/components/ProductShowcase";
 import RealWorldExperience from "@/components/RealWorldExperience";
 import ModelShowcase from "@/components/ModelShowcase";
 import Testimonials from "@/components/Testimonials";
+import Journey from "@/components/Journey";
+import Stories from "@/components/Stories";
 import CTA from "@/components/CTA";
 import Footer from "@/components/Footer";
 
@@ -30,6 +32,8 @@ export default function Home() {
         <RealWorldExperience />
         <ModelShowcase />
         <Testimonials />
+        <Journey />
+        <Stories />
         <CTA />
         <Footer />
       </div>

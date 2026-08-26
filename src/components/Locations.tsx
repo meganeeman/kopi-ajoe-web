@@ -5,7 +5,7 @@ import { motion, useInView } from "framer-motion";
 import { MapPin, ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
-const locations = [
+const locations: { code: string; name: string; isNew?: boolean }[] = [
     { code: "PYK", name: "Payakumbuh" },
     { code: "BKT", name: "Bukittinggi" },
     { code: "PDG", name: "Padang" },
@@ -20,6 +20,7 @@ const locations = [
     { code: "SLK", name: "Solok" },
     { code: "THORNS", name: "Duri" },
     { code: "DUMAI", name: "Dumai" },
+    { code: "LLG", name: "Lubuk Linggau", isNew: true },
 ];
 
 const comingSoon = ["Jambi", "Jakarta"];
@@ -76,11 +77,14 @@ export default function Locations() {
 
                 {/* Interactive Territory Grid */}
                 <div className="mb-24 relative">
-                    <div className="flex items-center justify-center gap-4 mb-12">
+                    <div className="flex items-center justify-center gap-4 mb-6">
                         <div className="h-[1px] w-12 bg-neutral-800" />
                         <h3 className="text-neutral-500 uppercase tracking-[0.2em] text-sm font-semibold">Our Territory</h3>
                         <div className="h-[1px] w-12 bg-neutral-800" />
                     </div>
+                    <p className="text-neutral-400 text-sm md:text-base max-w-xl mx-auto font-light mb-12">
+                        Dari jalanan Padang ke kota-kota di luar Sumatera Barat.
+                    </p>
 
                     <div
                         className="flex flex-wrap justify-center gap-4 relative"
@@ -117,6 +121,11 @@ export default function Locations() {
                                 )}
 
                                 <div className="z-10 flex flex-col items-center">
+                                    {loc.isNew && (
+                                        <span className="mb-1 text-[10px] font-bold uppercase tracking-widest text-red-500">
+                                            New
+                                        </span>
+                                    )}
                                     <span className={cn(
                                         "text-3xl font-bold tracking-tighter transition-colors duration-300",
                                         hoveredIndex === index ? "text-white" : "text-neutral-400 group-hover:text-white"
@@ -181,6 +190,10 @@ export default function Locations() {
                         </div>
                     </div>
                 </motion.div>
+
+                <p className="mt-16 text-xs text-neutral-600 tracking-wide">
+                    Sumber: liputan publik Riau24, Linggau Pos, dan Padang Ekspres.
+                </p>
             </div>
         </section>
     );

@@ -1,6 +1,6 @@
 "use client";
 
-import { useScroll, useTransform, motion, useMotionValueEvent } from "framer-motion";
+import { useScroll, useTransform, motion, useMotionValueEvent, useSpring } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { cn } from "@/lib/utils";
 
@@ -30,10 +30,13 @@ export default function SequenceScroll() {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     const [canvasSize, setCanvasSize] = useState({ width: 0, height: 0 });
 
-    const { scrollYProgress } = useScroll({
+    const { scrollYProgress: rawProgress } = useScroll({
         target: containerRef,
         offset: ["start start", "end end"],
     });
+
+    // Smooth the raw scroll progress so the sequence advances with gentle lag (cinematic feel)
+    const scrollYProgress = useSpring(rawProgress, { stiffness: 90, damping: 30, mass: 0.5 });
 
     // Sequence plays from 0% to 50% of scroll
     const currentIndex = useTransform(scrollYProgress, [0, 0.5], [1, frameCount]);
@@ -140,7 +143,7 @@ export default function SequenceScroll() {
     }, [loaded, canvasSize]); // canvasSize dependency to re-render on resize
 
     return (
-        <div ref={containerRef} className="h-[600vh] relative bg-black">
+        <div ref={containerRef} className="h-[900vh] relative bg-black">
             <Preloader progress={loadingProgress} loading={!loaded} />
 
             <div className="sticky top-0 h-screen w-full overflow-hidden">
@@ -163,7 +166,7 @@ export default function SequenceScroll() {
                     {/* 0% - Hero */}
                     <motion.div style={{ opacity: opacityHero }} className="absolute text-center drop-shadow-lg">
                         <h1 className="text-6xl md:text-9xl font-bold tracking-tighter uppercase text-white">Kopi Ajoe</h1>
-                        <p className="text-xl md:text-2xl mt-4 font-light tracking-widest uppercase text-white">The Essence of Dark Roast</p>
+                        <p className="text-xl md:text-2xl mt-4 font-light tracking-widest uppercase text-white">Sejuta Teman Di Jalan</p>
                     </motion.div>
 
                     {/* Slogan Left */}
