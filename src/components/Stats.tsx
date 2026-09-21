@@ -1,6 +1,6 @@
 "use client";
 
-import { useInView, animate, motion, useMotionValue, useTransform } from "framer-motion";
+import { useInView, animate, motion } from "framer-motion";
 import { useEffect, useRef } from "react";
 
 const stats = [

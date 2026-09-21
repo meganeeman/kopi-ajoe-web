@@ -1,9 +1,8 @@
 "use client";
 
 import { useRef } from "react";
-import { motion, useScroll, useTransform, useSpring, useInView } from "framer-motion";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import Image from "next/image";
-import { cn } from "@/lib/utils";
 
 const models = [
     {

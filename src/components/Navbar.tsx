@@ -2,8 +2,6 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { cn } from "@/lib/utils";
-import { Menu, X, Instagram, Twitter, Facebook } from "lucide-react";
 
 const navLinks = [
     { title: "Home", href: "#" },

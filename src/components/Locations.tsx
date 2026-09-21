@@ -2,7 +2,7 @@
 
 import React, { useRef, useState } from "react";
 import { motion, useInView } from "framer-motion";
-import { MapPin, ArrowUpRight } from "lucide-react";
+import { ArrowUpRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const locations: { code: string; name: string; isNew?: boolean }[] = [

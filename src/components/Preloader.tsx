@@ -1,6 +1,5 @@
 "use client";
 
-import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 export default function Preloader({ progress, loading }: { progress: number; loading: boolean }) {

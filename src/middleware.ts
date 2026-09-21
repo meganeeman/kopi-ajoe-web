@@ -1,8 +1,7 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
-// Note: Next.js 16+ renames middleware to proxy. This file replaces middleware.ts.
-export function proxy(request: NextRequest) {
+export function middleware(request: NextRequest) {
   const nonce = crypto.randomUUID()
 
   // Script-src:
@@ -56,3 +55,4 @@ export const config = {
     '/((?!api|_next/static|_next/image|favicon.ico).*)',
   ],
 }
+

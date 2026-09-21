@@ -3,7 +3,6 @@
 import { useScroll, useTransform, motion, MotionValue } from "framer-motion";
 import { useRef } from "react";
 import dynamic from "next/dynamic";
-import { cn } from "@/lib/utils";
 
 const Background3D = dynamic(() => import("./Background3D"), { ssr: false });
 

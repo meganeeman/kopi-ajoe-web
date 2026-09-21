@@ -1,8 +1,8 @@
 "use client";
 
 import { Canvas, useFrame } from "@react-three/fiber";
-import { useTexture, Environment, Float } from "@react-three/drei";
-import { useRef, useMemo, useState, useEffect, MutableRefObject } from "react";
+import { useTexture, Float } from "@react-three/drei";
+import { useRef, useMemo, useEffect, MutableRefObject } from "react";
 import * as THREE from "three";
 import { cn } from "@/lib/utils";
 
