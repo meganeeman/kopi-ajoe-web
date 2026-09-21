@@ -9,9 +9,12 @@ export default function Footer() {
                 <div className="flex flex-col md:flex-row justify-between items-end">
                     <div className="text-sm text-neutral-500 mb-4 md:mb-0 space-y-1">
                         <p>&copy; {new Date().getFullYear()} Kopi Ajoe Indonesia. All rights reserved.</p>
-                        <p>
+                        <p className="flex flex-wrap gap-4 pt-1">
                             <a href="/privacy-policy" className="hover:text-white transition-colors underline underline-offset-4">
                                 Kebijakan Privasi (Privacy Policy)
+                            </a>
+                            <a href="/support" className="hover:text-white transition-colors underline underline-offset-4">
+                                Pusat Bantuan (Support)
                             </a>
                         </p>
                     </div>
