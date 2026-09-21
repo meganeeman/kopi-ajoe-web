@@ -148,12 +148,12 @@ export default function SupportPage() {
                 </div>
               </div>
               <a
-                href="https://wa.me/6281266000000?text=Halo%20Tim%20CS%20Kopi%20Ajoe,%20saya%20membutuhkan%20bantuan"
+                href="https://wa.me/628212691657?text=Halo%20Tim%20CS%20Kopi%20Ajoe,%20saya%20membutuhkan%20bantuan"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center justify-between text-xs font-semibold text-emerald-400 hover:underline pt-2 border-t border-white/5"
               >
-                <span>Hubungi via WhatsApp</span>
+                <span>+62 821-2691-657</span>
                 <ExternalLink className="w-3.5 h-3.5" />
               </a>
             </div>
@@ -168,7 +168,7 @@ export default function SupportPage() {
                   <h3 className="font-semibold text-white text-base">Alamat Kantor Resmi</h3>
                   <p className="text-xs text-neutral-400 mt-1 leading-relaxed">
                     <strong>PT AJOE PERDANA INDONESIA</strong><br />
-                    Sumatera Barat, Indonesia
+                    Tanjung Munti, Desa/Kelurahan Sungai Beringin, Kec. Payakumbuh, Kab. Lima Puluh Kota, Provinsi Sumatera Barat, 26251
                   </p>
                 </div>
               </div>
