@@ -82,12 +82,12 @@ export default function BentoGrid() {
                         viewport={{ once: true }}
                         transition={{ duration: 0.5, delay: i * 0.1 }}
                         className={cn(
-                            "group relative min-h-[380px] sm:min-h-[420px] rounded-3xl overflow-hidden cursor-pointer bg-neutral-900/80 border border-white/10 hover:border-red-500/50 transition-all duration-500 flex flex-col justify-between p-8 sm:p-12 shadow-2xl",
+                            "group relative min-h-95 sm:min-h-105 rounded-3xl overflow-hidden cursor-pointer bg-neutral-900/80 border border-white/10 hover:border-red-500/50 transition-all duration-500 flex flex-col justify-between p-8 sm:p-12 shadow-2xl",
                             item.colSpan
                         )}
                     >
                         <div className="absolute right-0 bottom-0 top-0 w-1/2 sm:w-5/12 flex items-center justify-center p-4 pointer-events-none">
-                            <div className="relative w-full h-full max-h-[340px]">
+                            <div className="relative w-full h-full max-h-85">
                                 <Image
                                     src={item.image}
                                     alt={item.title}

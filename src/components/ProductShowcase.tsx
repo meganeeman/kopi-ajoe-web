@@ -202,7 +202,7 @@ export default function ProductShowcase() {
             ref={containerRef}
             className="bg-neutral-950 py-32 overflow-hidden relative scroll-mt-16"
         >
-            <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-neutral-900/50 via-neutral-950 to-neutral-950 pointer-events-none" />
+            <div className="absolute inset-0 bg-radial from-neutral-900/50 via-neutral-950 to-neutral-950 pointer-events-none" />
 
             <div className="container mx-auto px-4 mb-16 relative z-10 text-center">
                 <motion.h2
