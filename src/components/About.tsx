@@ -21,14 +21,20 @@ export default function About() {
     const container = useRef(null);
     const { scrollYProgress } = useScroll({
         target: container,
-        offset: ["start end", "end end"], // Start fading in when top of section hits bottom of screen
+        offset: ["start end", "end end"],
     });
 
     const words = content.split(" ");
 
     return (
-        <section ref={container} className="relative min-h-screen bg-black text-white flex items-center justify-center px-6 md:px-20 py-24 overflow-hidden">
-            <Background3D />
+        <section
+            id="about"
+            ref={container}
+            className="relative min-h-screen bg-black text-white flex items-center justify-center px-6 md:px-20 py-24 overflow-hidden scroll-mt-20"
+        >
+            <div className="absolute inset-0 pointer-events-none overflow-hidden">
+                <Background3D />
+            </div>
             <div className="relative z-10 max-w-4xl text-3xl md:text-5xl lg:text-6xl font-bold leading-[1.2] flex flex-wrap justify-center text-center">
                 {words.map((word, i) => {
                     const start = i / words.length;

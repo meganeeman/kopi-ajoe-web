@@ -38,15 +38,23 @@ const items = [
 
 export default function BentoGrid() {
     return (
-        <section className="min-h-screen bg-black text-white px-6 md:px-20 py-24 flex flex-col justify-center">
-            <div className="mb-16">
-                <h2 className="text-4xl md:text-6xl font-bold uppercase tracking-tighter">What Makes Ajoe</h2>
+        <section
+            id="what-makes-ajoe"
+            className="relative z-20 min-h-screen bg-black text-white px-6 md:px-20 pt-32 pb-24 md:pt-40 md:pb-32 flex flex-col justify-center scroll-mt-24"
+        >
+            <div className="max-w-7xl mx-auto w-full mb-12 md:mb-16 relative z-10">
+                <p className="text-xs font-bold uppercase tracking-[0.3em] text-red-500 mb-3">
+                    Our Core Identity
+                </p>
+                <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold uppercase tracking-tighter leading-tight">
+                    What Makes Ajoe
+                </h2>
             </div>
 
-            <div className="grid grid-cols-12 gap-4 max-w-7xl mx-auto w-full">
+            <div className="grid grid-cols-12 gap-4 max-w-7xl mx-auto w-full relative z-10">
                 {items.map((item, i) => (
                     <motion.div
-                        key={i}
+                        key={item.title}
                         whileHover={{ scale: 0.98 }}
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -57,25 +65,27 @@ export default function BentoGrid() {
                             item.colSpan
                         )}
                     >
-                        {/* Background Image */}
                         <div className="absolute inset-0">
                             <Image
                                 src={item.image}
                                 alt={item.title}
                                 fill
+                                sizes="(max-width: 768px) 100vw, 50vw"
                                 className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-80"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/40 to-transparent" />
                         </div>
 
                         <div className="relative z-10 flex flex-col h-full justify-between p-8 md:p-12">
-                            <div>
-                                {/* Top Content if any */}
-                            </div>
+                            <div />
                             <div>
                                 {item.icon}
-                                <h3 className="text-3xl md:text-4xl font-bold mb-2 tracking-tight">{item.title}</h3>
-                                <p className="text-neutral-300 text-lg group-hover:text-white transition-colors">{item.description}</p>
+                                <h3 className="text-3xl md:text-4xl font-bold mb-2 tracking-tight">
+                                    {item.title}
+                                </h3>
+                                <p className="text-neutral-300 text-lg group-hover:text-white transition-colors">
+                                    {item.description}
+                                </p>
                             </div>
                         </div>
                     </motion.div>

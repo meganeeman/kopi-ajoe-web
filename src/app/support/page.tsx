@@ -11,9 +11,6 @@ import {
   Building2,
   HelpCircle,
   ShieldCheck,
-  Smartphone,
-  Lock,
-  RefreshCw,
   ExternalLink,
 } from "lucide-react";
 

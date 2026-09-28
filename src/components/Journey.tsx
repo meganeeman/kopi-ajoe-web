@@ -44,7 +44,6 @@ export default function Journey() {
                 </div>
 
                 <div className="relative">
-                    {/* Vertical line */}
                     <div className="absolute left-4 md:left-1/2 top-0 bottom-0 w-px bg-white/10 md:-translate-x-1/2" />
 
                     <div className="flex flex-col gap-16">
@@ -60,7 +59,6 @@ export default function Journey() {
                                     i % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
                                 )}
                             >
-                                {/* Dot */}
                                 <div className="absolute left-4 md:left-1/2 -translate-x-1/2 w-3 h-3 rounded-full bg-red-500 ring-4 ring-red-500/20 mt-2" />
 
                                 <div className="pl-12 md:pl-0 md:w-1/2 md:px-12">
@@ -68,7 +66,7 @@ export default function Journey() {
                                         "flex flex-col",
                                         i % 2 === 0 ? "md:items-start md:text-left" : "md:items-end md:text-right"
                                     )}>
-                                        <span className="text-5xl md:text-7xl font-black tracking-tighter text-white/10 mb-2">
+                                        <span className="text-5xl md:text-7xl font-black tracking-tighter text-white/10 mb-2 font-mono">
                                             {m.year}
                                         </span>
                                         <h3 className="text-2xl md:text-3xl font-bold mb-3">{m.title}</h3>

@@ -19,11 +19,7 @@ export default function Home() {
   return (
     <main className="relative bg-black text-white selection:bg-white selection:text-black">
       <Navbar />
-
-      {/* Scroll Sequence */}
       <SequenceScroll />
-
-      {/* Content Sections - Overlapping the end of the scroll sequence */}
       <div className="relative z-10 -mt-[100vh] bg-black shadow-[0_-50px_100px_rgba(0,0,0,1)]">
         <About />
         <BentoGrid />

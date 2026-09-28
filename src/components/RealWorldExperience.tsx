@@ -18,7 +18,6 @@ export default function RealWorldExperience() {
     const opacity = useTransform(scrollYProgress, [0, 0.3], [0.5, 1]);
     const yText = useTransform(scrollYProgress, [0.3, 0.6], [50, 0]);
 
-    // Spring physics for smoother parallax
     const smoothScale = useSpring(scale, { damping: 15, stiffness: 100 });
 
     return (
@@ -26,7 +25,6 @@ export default function RealWorldExperience() {
             ref={containerRef}
             className="relative h-[120vh] w-full bg-neutral-950 overflow-hidden flex items-center justify-center"
         >
-            {/* Background Image Parallax */}
             <motion.div
                 style={{ scale: smoothScale, opacity }}
                 className="absolute inset-0 w-full h-full z-0"
@@ -38,15 +36,11 @@ export default function RealWorldExperience() {
                     className="object-cover object-center filter grayscale brightness-50 contrast-125"
                     priority
                 />
-                {/* Overlay Gradients */}
                 <div className="absolute inset-0 bg-gradient-to-b from-neutral-950 via-transparent to-neutral-950 opacity-90" />
                 <div className="absolute inset-0 bg-black/40" />
             </motion.div>
 
-            {/* Content Container */}
             <div className="relative z-10 w-full max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center h-full">
-
-                {/* Storytelling Text Side */}
                 <motion.div
                     style={{ y: yText }}
                     className="flex flex-col justify-center space-y-8"
@@ -69,9 +63,9 @@ export default function RealWorldExperience() {
                     </h2>
 
                     <p className="text-lg text-neutral-300 max-w-lg font-light leading-relaxed">
-                        It's the weight of the cup in your hand. The steam rising against the city lights.
-                        The quiet moment before the chaos begins. When you hold it, you're not just
-                        holding a drink—you're holding a standard.
+                        It&apos;s the weight of the cup in your hand. The steam rising against the city lights.
+                        The quiet moment before the chaos begins. When you hold it, you&apos;re not just
+                        holding a drink—you&apos;re holding a standard.
                     </p>
 
                     <div className="flex items-center gap-4 text-white/50 text-xs font-mono tracking-widest uppercase mt-12">
@@ -80,11 +74,9 @@ export default function RealWorldExperience() {
                     </div>
                 </motion.div>
 
-                {/* Empty right side for spacing, letting the image breathe or placing secondary details if needed */}
-                <div className="hidden lg:block"></div>
+                <div className="hidden lg:block" />
             </div>
 
-            {/* Floating Cinematic Captions */}
             <motion.div
                 style={{ x: useTransform(scrollYProgress, [0, 1], [0, -50]) }}
                 className="absolute bottom-24 right-12 z-20 text-right hidden md:block"
@@ -96,7 +88,6 @@ export default function RealWorldExperience() {
                     World
                 </h3>
             </motion.div>
-
         </section>
     );
 }

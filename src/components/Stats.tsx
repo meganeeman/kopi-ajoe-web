@@ -1,13 +1,13 @@
 "use client";
 
-import { useInView, animate, motion } from "framer-motion";
+import { useInView, animate } from "framer-motion";
 import { useEffect, useRef } from "react";
 
 const stats = [
     { label: "Team Members", value: 230, suffix: "+" },
     { label: "Mobile Coffee Units", value: 200, suffix: "+" },
     { label: "Coffee Beans / Month", value: 10, suffix: "T" },
-    { label: "Cities Reached", value: 7, suffix: "+" },
+    { label: "Cities Reached", value: 15, suffix: "+" },
 ];
 
 const Counter = ({ value }: { value: number }) => {
@@ -24,14 +24,14 @@ const Counter = ({ value }: { value: number }) => {
                 ease: [0.76, 0, 0.24, 1],
                 onUpdate: (latest) => {
                     node.textContent = Math.floor(latest).toLocaleString();
-                }
-            })
+                },
+            });
             return () => controls.stop();
         }
     }, [inView, value]);
 
-    return <span ref={ref}>0</span>
-}
+    return <span ref={ref}>0</span>;
+};
 
 export default function Stats() {
     return (

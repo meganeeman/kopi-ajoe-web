@@ -3,46 +3,61 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform, useMotionValue, useMotionTemplate } from "framer-motion";
 import Image from "next/image";
+import { ArrowUpRight } from "lucide-react";
 
-const products = [
+interface ProductItem {
+    id: number;
+    src: string;
+    title: string;
+    category: string;
+    description: string;
+    character: string;
+}
+
+const products: ProductItem[] = [
     {
         id: 1,
         src: "/images/product/0a59bc1f-d762-4c86-b0d1-9c093c40353c.jpeg",
         title: "Kopi Susu Butter",
         category: "Signature Series",
-        description: "Karakter khas yang creamy dengan sentuhan butter yang kaya.",
+        description: "Karakter khas yang creamy dengan sentuhan butter yang gurih dan aroma panggang berani.",
+        character: "Creamy & Bold",
     },
     {
         id: 2,
         src: "/images/product/8a93d9f2-b6f6-4334-a1d6-85d03af1c314.jpeg",
         title: "Kopi Susu Gula Aren",
         category: "Fan Favorite",
-        description: "Seimbang, dengan manisnya gula aren asli Sumatera Barat.",
+        description: "Keseimbangan presisi espresso lokal dengan manis legitnya gula aren asli Sumatera Barat.",
+        character: "Balanced Sweet",
     },
     {
         id: 3,
         src: "/images/product/9e55483b-7fa3-45b8-9436-eb2140edd63b.jpeg",
         title: "Kopi Karamel",
         category: "Sweet Series",
-        description: "Lembut dengan finishing karamel yang manis di akhir.",
+        description: "Tekstur lembut berpadu aroma karamel kental yang memanjakan lidah hingga tegukan terakhir.",
+        character: "Smooth & Rich",
     },
     {
         id: 4,
         src: "/images/product/b9571b8f-4e34-4e30-b247-37887ea65686.jpeg",
         title: "Kopi Susu Original",
         category: "Classic",
-        description: "Cita rasa otentik Padang, simpel dan nikmat.",
+        description: "Cita rasa otentik kopi jalanan Ranah Minang, kuat, jujur, dan membangkitkan fokus.",
+        character: "Strong & Authentic",
     },
     {
         id: 5,
         src: "/images/product/d0c10c83-c0b2-4cd7-b7bb-3ac38c8f2aed.jpeg",
         title: "Es Kopi Ajoe",
         category: "Refreshing",
-        description: "Kopi dingin yang menghantar semangat di setiap tegukan.",
+        description: "Racikan dingin andalan teman di jalan yang menyegarkan di bawah terik matahari Sumatera.",
+        character: "Cold & Energizing",
     },
 ];
 
-const Card = ({ product, index }: { product: typeof products[0]; index: number }) => {
+const ProductCard = ({ product, index }: { product: ProductItem; index: number }) => {
     const mouseX = useMotionValue(0);
     const mouseY = useMotionValue(0);
 
@@ -53,55 +68,68 @@ const Card = ({ product, index }: { product: typeof products[0]; index: number }
     }
 
     return (
-        <div
-            className="group relative h-[450px] w-full md:w-[350px] overflow-hidden rounded-3xl bg-neutral-900 border border-neutral-800"
+        <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ delay: index * 0.08, duration: 0.5 }}
             onMouseMove={handleMouseMove}
+            className="group relative w-full sm:w-[320px] md:w-[350px] aspect-[4/5] rounded-3xl overflow-hidden bg-neutral-900 border border-white/10 hover:border-red-500/50 transition-all duration-500 flex flex-col justify-between p-6 sm:p-8"
         >
             <motion.div
-                className="pointer-events-none absolute -inset-px rounded-3xl opacity-0 transition duration-300 group-hover:opacity-100"
+                className="pointer-events-none absolute -inset-px rounded-3xl opacity-0 transition duration-300 group-hover:opacity-100 z-10"
                 style={{
                     background: useMotionTemplate`
             radial-gradient(
-              650px circle at ${mouseX}px ${mouseY}px,
-              rgba(255,255,255,0.1),
+              550px circle at ${mouseX}px ${mouseY}px,
+              rgba(220, 38, 38, 0.15),
               transparent 80%
             )
           `,
                 }}
             />
 
-            {/* Image Container with Zoom effect */}
-            <div className="h-full w-full overflow-hidden">
+            <div className="absolute inset-0">
                 <Image
                     src={product.src}
                     alt={product.title}
                     fill
                     sizes="(max-width: 768px) 100vw, 350px"
-                    className="object-cover transition-transform duration-700 group-hover:scale-110 opacity-60 group-hover:opacity-100"
+                    className="object-cover object-center transition-transform duration-700 group-hover:scale-105 opacity-70 group-hover:opacity-95"
+                    priority={index < 2}
                 />
-                {/* Cinematic Vignette */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-transparent" />
             </div>
 
-            {/* Content */}
-            <div className="absolute inset-0 flex flex-col justify-end p-8">
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1, duration: 0.5 }}
-                >
-                    <p className="text-xs font-bold text-red-500 uppercase tracking-widest mb-2">
-                        {product.category}
-                    </p>
-                    <h3 className="text-3xl font-black text-white uppercase tracking-tighter mb-2 leading-none">
-                        {product.title}
-                    </h3>
-                    <p className="text-neutral-400 text-sm line-clamp-2 max-w-[90%] opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
-                        {product.description}
-                    </p>
-                </motion.div>
+            <div className="relative z-20 flex justify-between items-start">
+                <span className="text-[10px] sm:text-xs font-mono font-bold text-red-500 uppercase tracking-widest bg-black/60 border border-red-500/30 px-3 py-1 rounded-full backdrop-blur-sm">
+                    {product.category}
+                </span>
+                <span className="text-[10px] font-mono uppercase tracking-wider text-neutral-400 bg-neutral-950/70 px-2.5 py-1 rounded-full border border-white/5">
+                    {product.character}
+                </span>
             </div>
-        </div>
+
+            <div className="relative z-20">
+                <h3 className="text-2xl sm:text-3xl font-black text-white uppercase tracking-tight mb-2 leading-none">
+                    {product.title}
+                </h3>
+                <p className="text-neutral-300 text-xs sm:text-sm font-light leading-relaxed mb-4 line-clamp-2">
+                    {product.description}
+                </p>
+
+                <a
+                    href={`https://wa.me/6281267890123?text=Halo%20Kopi%20Ajoe%2C%20saya%20ingin%20memesan%20menu%20${encodeURIComponent(product.title)}`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center justify-between w-full px-4 py-2.5 rounded-full bg-white/10 hover:bg-white text-white hover:text-black font-semibold text-xs tracking-wider uppercase transition-all duration-300 border border-white/10"
+                >
+                    <span>Pesan Menu Ini</span>
+                    <ArrowUpRight className="w-3.5 h-3.5" />
+                </a>
+            </div>
+        </motion.div>
     );
 };
 
@@ -116,11 +144,14 @@ export default function ProductShowcase() {
     const x2 = useTransform(scrollYProgress, [0, 1], [0, 100]);
 
     return (
-        <section className="bg-neutral-950 py-32 overflow-hidden relative" ref={containerRef}>
-            {/* Background Ambience */}
+        <section
+            id="products"
+            ref={containerRef}
+            className="bg-neutral-950 py-32 overflow-hidden relative scroll-mt-16"
+        >
             <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-neutral-900/50 via-neutral-950 to-neutral-950 pointer-events-none" />
 
-            <div className="container mx-auto px-4 mb-24 relative z-10">
+            <div className="container mx-auto px-4 mb-20 relative z-10">
                 <motion.h2
                     initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
@@ -136,13 +167,12 @@ export default function ProductShowcase() {
                 </div>
             </div>
 
-            <div className="flex flex-wrap justify-center gap-8 px-4 relative z-10 max-w-7xl mx-auto">
+            <div className="flex flex-wrap justify-center gap-6 sm:gap-8 px-4 relative z-10 max-w-7xl mx-auto">
                 {products.map((product, index) => (
-                    <Card key={product.id} product={product} index={index} />
+                    <ProductCard key={product.id} product={product} index={index} />
                 ))}
             </div>
 
-            {/* Decorative floating text */}
             <motion.div
                 style={{ x: x1 }}
                 className="absolute top-1/4 -left-24 text-[10rem] font-black text-white/5 whitespace-nowrap pointer-events-none"
