@@ -20,7 +20,7 @@ const products: ProductItem[] = [
     {
         id: "strong",
         src: "/images/STRONG.png",
-        title: "Kopi Ajoe Strong",
+        title: "Ajoe Strong",
         category: "Coffee",
         filterCategory: "coffee",
         description: "Espresso mantap dengan sentuhan susu gurih dan cita rasa kopi yang dominan, diracik khusus untuk pecinta kopi sejati yang butuh fokus tinggi.",
@@ -29,7 +29,7 @@ const products: ProductItem[] = [
     {
         id: "soft",
         src: "/images/SOFT.png",
-        title: "Kopi Ajoe Soft",
+        title: "Ajoe Soft",
         category: "Coffee",
         filterCategory: "coffee",
         description: "Perpaduan harmonis espresso ringan dengan kelembutan susu segar pilihan, pas dinikmati santai kapan saja di jalan.",
@@ -38,7 +38,7 @@ const products: ProductItem[] = [
     {
         id: "butter",
         src: "/images/BUTTER.png",
-        title: "Kopi Susu Butter",
+        title: "Ajoe Butter",
         category: "Signature Series",
         filterCategory: "coffee",
         description: "Menu ikonik Kopi Ajoe dengan sentuhan salted butter gurih yang menyatu sempurna dengan aroma kopi sangrai lokal khas Minang.",
@@ -65,10 +65,10 @@ const products: ProductItem[] = [
     {
         id: "matcha",
         src: "/images/MATCHA.png",
-        title: "Matcha Latte",
+        title: "Ajoe Greentea",
         category: "Non-Coffee",
         filterCategory: "non-coffee",
-        description: "Racikan bubuk matcha hijau premium berpadu susu segar dingin yang menenangkan dengan sentuhan manis pas di lidah.",
+        description: "Racikan bubuk teh hijau matcha premium berpadu susu segar dingin yang menenangkan dengan sentuhan manis pas di lidah.",
         character: "Earthy & Sweet",
     },
     {
