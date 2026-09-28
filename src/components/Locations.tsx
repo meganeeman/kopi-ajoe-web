@@ -347,7 +347,7 @@ export default function Locations() {
                                     <ExternalLink className="w-3.5 h-3.5" />
                                 </a>
                                 <a
-                                    href={`https://wa.me/6281267890123?text=Halo%20Kopi%20Ajoe%2C%20saya%20ingin%20info%20gerai%20wilayah%20${encodeURIComponent(selectedCity.name)}`}
+                                    href={`https://wa.me/628212691657?text=Halo%20Kopi%20Ajoe%2C%20saya%20ingin%20info%20gerai%20wilayah%20${encodeURIComponent(selectedCity.name)}`}
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-neutral-800 hover:bg-neutral-700 text-white text-xs font-bold uppercase tracking-wider transition-colors border border-white/10"

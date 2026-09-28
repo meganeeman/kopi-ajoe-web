@@ -23,7 +23,7 @@ export default function CTA() {
 
                 <div className="flex flex-col items-center gap-6">
                     <motion.a
-                        href="https://wa.me/6281267890123?text=Halo%20Kopi%20Ajoe%2C%20saya%20ingin%20memesan%20kopi"
+                        href="https://wa.me/628212691657?text=Halo%20Kopi%20Ajoe%2C%20saya%20ingin%20memesan%20kopi"
                         target="_blank"
                         rel="noopener noreferrer"
                         whileHover={{ scale: 1.05 }}
@@ -39,7 +39,7 @@ export default function CTA() {
 
                     <div className="flex flex-wrap justify-center items-center gap-4 sm:gap-6 pt-4 text-xs font-mono uppercase tracking-wider text-neutral-600">
                         <a
-                            href="https://wa.me/6281267890123?text=Halo%20Kopi%20Ajoe%2C%20saya%20ingin%20pesan%20antar"
+                            href="https://wa.me/628212691657?text=Halo%20Kopi%20Ajoe%2C%20saya%20ingin%20pesan%20antar"
                             target="_blank"
                             rel="noopener noreferrer"
                             className="inline-flex items-center gap-1.5 hover:text-black transition-colors border-b border-black/20 pb-0.5"

@@ -160,7 +160,7 @@ export default function Navbar() {
                                     Instagram <ArrowUpRight className="w-3.5 h-3.5" />
                                 </a>
                                 <a
-                                    href="https://wa.me/6281267890123"
+                                    href="https://wa.me/628212691657"
                                     target="_blank"
                                     rel="noopener noreferrer"
                                     className="flex items-center gap-1 hover:text-red-500 transition-colors"

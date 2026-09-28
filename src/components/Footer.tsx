@@ -48,14 +48,14 @@ export default function Footer() {
                             </p>
                             <p className="flex items-center gap-2.5">
                                 <Phone className="w-4 h-4 text-neutral-500 shrink-0" />
-                                <a href="https://wa.me/6281267890123" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
-                                    +62 812-6789-0123 (Hotline / CS)
+                                <a href="https://wa.me/628212691657" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">
+                                    +62 821-2691-657 (Hotline / CS)
                                 </a>
                             </p>
                             <p className="flex items-center gap-2.5">
                                 <Mail className="w-4 h-4 text-neutral-500 shrink-0" />
-                                <a href="mailto:kontak@kopiajoe.com" className="hover:text-white transition-colors">
-                                    kontak@kopiajoe.com
+                                <a href="mailto:admin@kopiajoe.com" className="hover:text-white transition-colors">
+                                    admin@kopiajoe.com
                                 </a>
                             </p>
                         </div>

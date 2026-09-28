@@ -120,7 +120,7 @@ const ProductCard = ({ product, index }: { product: ProductItem; index: number }
                 </p>
 
                 <a
-                    href={`https://wa.me/6281267890123?text=Halo%20Kopi%20Ajoe%2C%20saya%20ingin%20memesan%20menu%20${encodeURIComponent(product.title)}`}
+                    href={`https://wa.me/628212691657?text=Halo%20Kopi%20Ajoe%2C%20saya%20ingin%20memesan%20menu%20${encodeURIComponent(product.title)}`}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="inline-flex items-center justify-between w-full px-4 py-2.5 rounded-full bg-white/10 hover:bg-white text-white hover:text-black font-semibold text-xs tracking-wider uppercase transition-all duration-300 border border-white/10"
