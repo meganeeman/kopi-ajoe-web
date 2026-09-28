@@ -1,6 +1,7 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useSyncExternalStore } from "react";
+import { createPortal } from "react-dom";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Apple, Play, ArrowUpRight, MessageCircle, Clock } from "lucide-react";
 import { APP_CONFIG } from "@/config/appConfig";
@@ -11,7 +12,20 @@ interface AppDownloadModalProps {
     onClose: () => void;
 }
 
+function subscribe() {
+    return () => {};
+}
+
+function getSnapshot() {
+    return typeof document !== "undefined";
+}
+
+function getServerSnapshot() {
+    return false;
+}
+
 export default function AppDownloadModal({ isOpen, onClose }: AppDownloadModalProps) {
+    const mounted = useSyncExternalStore(subscribe, getSnapshot, getServerSnapshot);
     const { device } = useDeviceDetection();
 
     useEffect(() => {
@@ -31,17 +45,19 @@ export default function AppDownloadModal({ isOpen, onClose }: AppDownloadModalPr
         };
     }, [isOpen, onClose]);
 
-    return (
+    if (!mounted) return null;
+
+    return createPortal(
         <AnimatePresence>
             {isOpen && (
-                <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+                <div className="fixed inset-0 z-[999] flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.2 }}
                         onClick={onClose}
-                        className="fixed inset-0 bg-black/85 backdrop-blur-md cursor-pointer"
+                        className="fixed inset-0 bg-black/85 backdrop-blur-md cursor-pointer z-[999]"
                     />
 
                     <motion.div
@@ -49,7 +65,7 @@ export default function AppDownloadModal({ isOpen, onClose }: AppDownloadModalPr
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.95, y: 20 }}
                         transition={{ duration: 0.25, ease: "easeOut" }}
-                        className="relative z-10 w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-neutral-900 border border-white/15 rounded-3xl p-6 sm:p-10 shadow-2xl text-white my-auto"
+                        className="relative z-[1000] w-full max-w-2xl max-h-[85vh] overflow-y-auto bg-neutral-900 border border-white/15 rounded-2xl sm:rounded-3xl p-6 sm:p-10 shadow-2xl text-white my-auto"
                     >
                         <div className="absolute top-0 right-0 w-96 h-96 bg-red-600/10 blur-[100px] rounded-full pointer-events-none" />
 
@@ -207,6 +223,7 @@ export default function AppDownloadModal({ isOpen, onClose }: AppDownloadModalPr
                     </motion.div>
                 </div>
             )}
-        </AnimatePresence>
+        </AnimatePresence>,
+        document.body
     );
 }
