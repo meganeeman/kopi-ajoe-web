@@ -115,7 +115,7 @@ const ProductCard = ({ product, index }: { product: ProductItem; index: number }
             viewport={{ once: true }}
             transition={{ delay: (index % 4) * 0.08, duration: 0.5 }}
             onMouseMove={handleMouseMove}
-            className="group relative w-full sm:w-[320px] md:w-[350px] aspect-[4/5] rounded-3xl overflow-hidden bg-neutral-900/90 border border-white/10 hover:border-red-500/50 transition-all duration-500 flex flex-col justify-between p-6 sm:p-8 shadow-2xl"
+            className="group relative w-full sm:w-80 md:w-87.5 aspect-4/5 rounded-3xl overflow-hidden bg-neutral-900/90 border border-white/10 hover:border-red-500/50 transition-all duration-500 flex flex-col justify-between p-6 sm:p-8 shadow-2xl"
         >
             <motion.div
                 className="pointer-events-none absolute -inset-px rounded-3xl opacity-0 transition duration-300 group-hover:opacity-100 z-10"
@@ -146,8 +146,8 @@ const ProductCard = ({ product, index }: { product: ProductItem; index: number }
                         priority={index < 2}
                     />
                 </div>
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent pointer-events-none" />
-                <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-transparent to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-linear-to-t from-black via-black/40 to-transparent pointer-events-none" />
+                <div className="absolute inset-0 bg-linear-to-b from-black/50 via-transparent to-transparent pointer-events-none" />
             </div>
 
             <div className="relative z-20 flex justify-between items-start">

@@ -41,7 +41,7 @@ export default function CTA() {
     return (
         <>
             <section className="min-h-[85vh] relative bg-white text-black flex items-center justify-center overflow-hidden py-24 px-6">
-                <div className="absolute inset-0 bg-gradient-to-br from-neutral-200 via-neutral-100 to-white" />
+                <div className="absolute inset-0 bg-linear-to-br from-neutral-200 via-neutral-100 to-white" />
 
                 <div className="relative z-10 text-center max-w-4xl mx-auto">
                     <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-black/5 border border-black/10 mb-6">

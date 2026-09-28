@@ -34,14 +34,14 @@ export default function AppDownloadModal({ isOpen, onClose }: AppDownloadModalPr
     return (
         <AnimatePresence>
             {isOpen && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+                <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.2 }}
                         onClick={onClose}
-                        className="fixed inset-0 bg-black/85 backdrop-blur-md"
+                        className="fixed inset-0 bg-black/85 backdrop-blur-md cursor-pointer"
                     />
 
                     <motion.div
@@ -49,17 +49,21 @@ export default function AppDownloadModal({ isOpen, onClose }: AppDownloadModalPr
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.95, y: 20 }}
                         transition={{ duration: 0.25, ease: "easeOut" }}
-                        className="relative z-10 w-full max-w-2xl bg-neutral-900 border border-white/15 rounded-3xl p-6 sm:p-10 shadow-2xl text-white my-auto overflow-hidden"
+                        onClick={(e) => e.stopPropagation()}
+                        className="relative z-10 w-full max-w-2xl max-h-[92vh] overflow-y-auto bg-neutral-900 border border-white/15 rounded-3xl p-6 sm:p-10 shadow-2xl text-white my-auto pointer-events-auto"
                     >
                         <div className="absolute top-0 right-0 w-96 h-96 bg-red-600/10 blur-[100px] rounded-full pointer-events-none" />
 
                         <button
                             type="button"
-                            onClick={onClose}
-                            className="absolute top-5 right-5 p-2 rounded-full bg-neutral-800/80 hover:bg-neutral-700 text-neutral-400 hover:text-white transition-colors"
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                onClose();
+                            }}
+                            className="absolute top-5 right-5 z-50 p-2.5 rounded-full bg-neutral-800/90 hover:bg-neutral-700 text-neutral-300 hover:text-white transition-all cursor-pointer border border-white/10 flex items-center justify-center focus:outline-none focus:ring-2 focus:ring-red-500"
                             aria-label="Tutup"
                         >
-                            <X className="w-5 h-5" />
+                            <X className="w-5 h-5 pointer-events-none" />
                         </button>
 
                         <div className="flex items-center gap-2 mb-3">
@@ -73,7 +77,7 @@ export default function AppDownloadModal({ isOpen, onClose }: AppDownloadModalPr
                             )}
                         </div>
 
-                        <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-tight mb-3">
+                        <h3 className="text-2xl sm:text-3xl font-black uppercase tracking-tight mb-3 pr-10">
                             Pesan Antar & Titik Gerobak Real-Time
                         </h3>
 

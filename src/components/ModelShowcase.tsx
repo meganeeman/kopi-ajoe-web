@@ -74,7 +74,7 @@ export default function ModelShowcase() {
                     {models.map((model, index) => (
                         <div
                             key={index}
-                            className="relative w-[300px] md:w-[450px] aspect-[3/4] group overflow-hidden rounded-md bg-neutral-900"
+                            className="relative w-75 md:w-112.5 aspect-3/4 group overflow-hidden rounded-md bg-neutral-900"
                         >
                             <Image
                                 src={model.src}
@@ -83,7 +83,7 @@ export default function ModelShowcase() {
                                 sizes="(max-width: 768px) 300px, 450px"
                                 className="object-cover transition-transform duration-700 group-hover:scale-105 filter grayscale-[30%] group-hover:grayscale-0"
                             />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
+                            <div className="absolute inset-0 bg-linear-to-t from-black/80 via-transparent to-transparent opacity-60 group-hover:opacity-80 transition-opacity" />
 
                             <div className="absolute bottom-0 left-0 p-8 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                                 <p className="text-2xl font-serif italic text-white mb-2">&ldquo;{model.quote}&rdquo;</p>

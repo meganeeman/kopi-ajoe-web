@@ -98,8 +98,8 @@ export default function BentoGrid() {
                             </div>
                         </div>
 
-                        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/40 to-transparent pointer-events-none" />
-                        <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/70 to-transparent pointer-events-none" />
+                        <div className="absolute inset-0 bg-linear-to-t from-black via-black/40 to-transparent pointer-events-none" />
+                        <div className="absolute inset-0 bg-linear-to-r from-black/95 via-black/70 to-transparent pointer-events-none" />
 
                         <div className="relative z-10 flex items-center justify-between w-full">
                             <div className="flex items-center gap-3">

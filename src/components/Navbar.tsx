@@ -98,17 +98,17 @@ export default function Navbar() {
                     </div>
                     <div className="w-8 flex flex-col gap-1.5 items-end">
                         <span
-                            className={`h-[2px] bg-white transition-all duration-300 ${
+                            className={`h-0.5 bg-white transition-all duration-300 ${
                                 isOpen ? "w-8 rotate-45 translate-y-2" : "w-8"
                             }`}
                         />
                         <span
-                            className={`h-[2px] bg-white transition-all duration-300 ${
+                            className={`h-0.5 bg-white transition-all duration-300 ${
                                 isOpen ? "opacity-0" : "w-5"
                             }`}
                         />
                         <span
-                            className={`h-[2px] bg-white transition-all duration-300 ${
+                            className={`h-0.5 bg-white transition-all duration-300 ${
                                 isOpen ? "w-8 -rotate-45 -translate-y-2" : "w-6"
                             }`}
                         />
