@@ -2,12 +2,17 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useLenis } from "@studio-freight/react-lenis";
 import { ArrowUpRight } from "lucide-react";
 
 interface NavLinkItem {
     title: string;
     targetId: string;
+}
+
+interface LenisWindow extends Window {
+    lenis?: {
+        scrollTo: (target: number | HTMLElement, opts?: { offset?: number; duration?: number }) => void;
+    };
 }
 
 const navLinks: NavLinkItem[] = [
@@ -20,7 +25,6 @@ const navLinks: NavLinkItem[] = [
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
-    const lenis = useLenis();
 
     useEffect(() => {
         if (isOpen) {
@@ -38,10 +42,13 @@ export default function Navbar() {
         document.body.style.overflow = "";
 
         setTimeout(() => {
+            const win = typeof window !== "undefined" ? (window as unknown as LenisWindow) : null;
+            const lenis = win?.lenis;
+
             if (targetId === "hero") {
                 if (lenis) {
                     lenis.scrollTo(0, { duration: 1.2 });
-                } else {
+                } else if (typeof window !== "undefined") {
                     window.scrollTo({ top: 0, behavior: "smooth" });
                 }
                 return;
