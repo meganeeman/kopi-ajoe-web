@@ -122,10 +122,10 @@ export default function Stories() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.7 }}
-                    className="group relative block rounded-3xl overflow-hidden h-[420px] md:h-[520px] border border-white/10 hover:border-red-500/50 cursor-pointer transition-all duration-300"
+                    className="group relative block rounded-3xl overflow-hidden h-105 md:h-130 border border-white/10 hover:border-red-500/50 cursor-pointer transition-all duration-300"
                 >
-                    <div className="absolute inset-0 bg-gradient-to-br from-red-950/60 via-neutral-900 to-black" />
-                    <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-red-500/15 via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-linear-to-br from-red-950/60 via-neutral-900 to-black" />
+                    <div className="absolute inset-0 bg-radial from-red-500/15 via-transparent to-transparent" />
                     <div className="relative z-10 h-full flex flex-col justify-end p-8 sm:p-12 md:p-16">
                         <span className="text-xs font-mono font-bold uppercase tracking-[0.3em] text-red-400 mb-4">
                             {featuredStory.tag}
