@@ -31,27 +31,17 @@ export default function AppDownloadModal({ isOpen, onClose }: AppDownloadModalPr
         };
     }, [isOpen, onClose]);
 
-    const handleClose = (e?: React.MouseEvent | React.TouchEvent) => {
-        if (e) {
-            e.preventDefault();
-            e.stopPropagation();
-        }
-        onClose();
-    };
-
     return (
         <AnimatePresence>
             {isOpen && (
-                <div
-                    className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 overflow-y-auto"
-                    onClick={() => handleClose()}
-                >
+                <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.2 }}
-                        className="fixed inset-0 bg-black/85 backdrop-blur-md cursor-pointer pointer-events-none"
+                        onClick={onClose}
+                        className="fixed inset-0 bg-black/85 backdrop-blur-md cursor-pointer"
                     />
 
                     <motion.div
@@ -59,12 +49,11 @@ export default function AppDownloadModal({ isOpen, onClose }: AppDownloadModalPr
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.95, y: 20 }}
                         transition={{ duration: 0.25, ease: "easeOut" }}
-                        onClick={(e) => e.stopPropagation()}
-                        className="relative z-10 w-full max-w-2xl max-h-[92vh] overflow-y-auto bg-neutral-900 border border-white/15 rounded-3xl p-6 sm:p-10 shadow-2xl text-white my-auto pointer-events-auto"
+                        className="relative z-10 w-full max-w-2xl max-h-[90vh] overflow-y-auto bg-neutral-900 border border-white/15 rounded-3xl p-6 sm:p-10 shadow-2xl text-white my-auto"
                     >
                         <div className="absolute top-0 right-0 w-96 h-96 bg-red-600/10 blur-[100px] rounded-full pointer-events-none" />
 
-                        <div className="sticky top-0 z-30 bg-neutral-900/95 backdrop-blur-md pb-4 pt-1 -mt-1 flex items-start justify-between gap-4 border-b border-white/5 mb-4">
+                        <div className="sticky top-0 z-50 bg-neutral-900/95 backdrop-blur-md pb-4 pt-1 -mt-1 flex items-start justify-between gap-4 border-b border-white/5 mb-4">
                             <div className="flex flex-wrap items-center gap-2">
                                 <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-red-500 bg-red-950/50 border border-red-500/30 px-3 py-1 rounded-full">
                                     Aplikasi Resmi Kopi Ajoe
@@ -78,9 +67,11 @@ export default function AppDownloadModal({ isOpen, onClose }: AppDownloadModalPr
 
                             <button
                                 type="button"
-                                onClick={handleClose}
-                                onTouchEnd={handleClose}
-                                className="w-11 h-11 min-w-[44px] min-h-[44px] shrink-0 rounded-full bg-neutral-800/90 hover:bg-neutral-700 active:bg-neutral-600 active:scale-95 text-neutral-300 hover:text-white transition-all cursor-pointer border border-white/15 flex items-center justify-center touch-manipulation z-50 pointer-events-auto shadow-md focus:outline-none focus:ring-2 focus:ring-red-500"
+                                onClick={(e) => {
+                                    e.stopPropagation();
+                                    onClose();
+                                }}
+                                className="w-11 h-11 min-w-[44px] min-h-[44px] shrink-0 rounded-full bg-neutral-800 hover:bg-neutral-700 active:bg-neutral-600 active:scale-95 text-neutral-300 hover:text-white transition-all cursor-pointer border border-white/15 flex items-center justify-center relative z-50 pointer-events-auto shadow-md focus:outline-none focus:ring-2 focus:ring-red-500"
                                 aria-label="Tutup Modal"
                             >
                                 <X className="w-5 h-5 pointer-events-none" />

@@ -27,16 +27,6 @@ const navLinks: NavLinkItem[] = [
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
-    const [isScrolled, setIsScrolled] = useState(false);
-
-    useEffect(() => {
-        const handleScroll = () => {
-            setIsScrolled(window.scrollY > 20);
-        };
-        handleScroll();
-        window.addEventListener("scroll", handleScroll, { passive: true });
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
 
     useEffect(() => {
         if (isOpen) {
@@ -92,9 +82,7 @@ export default function Navbar() {
                     "fixed top-0 left-0 w-full z-50 px-6 md:px-12 flex justify-between items-center text-white transition-all duration-300",
                     isOpen
                         ? "bg-transparent py-5 md:py-6"
-                        : isScrolled
-                        ? "bg-neutral-950/80 backdrop-blur-md border-b border-white/10 shadow-lg shadow-black/40 py-4 md:py-5"
-                        : "bg-linear-to-b from-black/80 via-black/30 to-transparent py-5 md:py-6"
+                        : "backdrop-blur-md bg-black/40 border-b border-white/10 shadow-lg shadow-black/20 py-4 md:py-5"
                 )}
             >
                 <button
@@ -112,7 +100,7 @@ export default function Navbar() {
                     aria-label={isOpen ? "Tutup Menu" : "Buka Menu"}
                 >
                     <span className="sr-only">Toggle Menu</span>
-                    <div className="text-xs font-mono font-medium tracking-widest uppercase hidden md:block text-neutral-300 group-hover:text-white transition-colors">
+                    <div className="text-xs font-mono font-medium tracking-widest uppercase mb-0.5 hidden md:block text-neutral-300 group-hover:text-white transition-colors">
                         {isOpen ? "Close" : "Menu"}
                     </div>
                     <div className="w-8 flex flex-col gap-1.5 items-end justify-center">
