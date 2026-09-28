@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 
 interface NavLinkItem {
@@ -63,6 +64,11 @@ export default function Navbar() {
                 }
             }
         }, 150);
+    };
+
+    const handleExternalNav = () => {
+        setIsOpen(false);
+        document.body.style.overflow = "";
     };
 
     return (
@@ -143,6 +149,25 @@ export default function Navbar() {
                                         </motion.button>
                                     </div>
                                 ))}
+
+                                <div className="flex flex-wrap justify-center gap-3 pt-6">
+                                    <Link
+                                        href="/privacy-policy"
+                                        onClick={handleExternalNav}
+                                        className="px-4 py-2 rounded-full border border-white/10 hover:border-red-500/50 hover:text-red-400 bg-neutral-900/60 text-xs font-mono uppercase tracking-wider transition-colors flex items-center gap-1.5"
+                                    >
+                                        <span>Privacy Policy</span>
+                                        <ArrowUpRight className="w-3.5 h-3.5" />
+                                    </Link>
+                                    <Link
+                                        href="/support"
+                                        onClick={handleExternalNav}
+                                        className="px-4 py-2 rounded-full border border-white/10 hover:border-red-500/50 hover:text-red-400 bg-neutral-900/60 text-xs font-mono uppercase tracking-wider transition-colors flex items-center gap-1.5"
+                                    >
+                                        <span>Contact Support</span>
+                                        <ArrowUpRight className="w-3.5 h-3.5" />
+                                    </Link>
+                                </div>
                             </div>
                         </div>
 
@@ -150,7 +175,21 @@ export default function Navbar() {
                             <div>
                                 <p className="text-neutral-500">Kopi Ajoe Indonesia</p>
                             </div>
-                            <div className="flex flex-wrap gap-6 items-center">
+                            <div className="flex flex-wrap justify-center md:justify-end gap-6 items-center">
+                                <Link
+                                    href="/privacy-policy"
+                                    onClick={handleExternalNav}
+                                    className="flex items-center gap-1 hover:text-red-500 transition-colors"
+                                >
+                                    Privacy Policy <ArrowUpRight className="w-3.5 h-3.5" />
+                                </Link>
+                                <Link
+                                    href="/support"
+                                    onClick={handleExternalNav}
+                                    className="flex items-center gap-1 hover:text-red-500 transition-colors"
+                                >
+                                    Contact Support <ArrowUpRight className="w-3.5 h-3.5" />
+                                </Link>
                                 <a
                                     href="https://instagram.com/kopiajoe"
                                     target="_blank"
@@ -158,14 +197,6 @@ export default function Navbar() {
                                     className="flex items-center gap-1 hover:text-red-500 transition-colors"
                                 >
                                     Instagram <ArrowUpRight className="w-3.5 h-3.5" />
-                                </a>
-                                <a
-                                    href="https://wa.me/628212691657"
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="flex items-center gap-1 hover:text-red-500 transition-colors"
-                                >
-                                    WhatsApp Order <ArrowUpRight className="w-3.5 h-3.5" />
                                 </a>
                                 <a
                                     href="https://maps.google.com/?q=Kopi+Ajoe+Sungai+Beringin"
