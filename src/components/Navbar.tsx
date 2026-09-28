@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
+import { cn } from "@/lib/utils";
 
 interface NavLinkItem {
     title: string;
@@ -26,6 +27,16 @@ const navLinks: NavLinkItem[] = [
 
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setIsScrolled(window.scrollY > 20);
+        };
+        handleScroll();
+        window.addEventListener("scroll", handleScroll, { passive: true });
+        return () => window.removeEventListener("scroll", handleScroll);
+    }, []);
 
     useEffect(() => {
         if (isOpen) {
@@ -77,7 +88,14 @@ export default function Navbar() {
                 initial={{ y: -100 }}
                 animate={{ y: 0 }}
                 transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
-                className="fixed top-0 left-0 w-full z-50 px-6 py-6 md:px-12 flex justify-between items-center mix-blend-difference text-white"
+                className={cn(
+                    "fixed top-0 left-0 w-full z-50 px-6 md:px-12 flex justify-between items-center text-white transition-all duration-300",
+                    isOpen
+                        ? "bg-transparent py-5 md:py-6"
+                        : isScrolled
+                        ? "bg-neutral-950/80 backdrop-blur-md border-b border-white/10 shadow-lg shadow-black/40 py-4 md:py-5"
+                        : "bg-linear-to-b from-black/80 via-black/30 to-transparent py-5 md:py-6"
+                )}
             >
                 <button
                     type="button"
@@ -90,16 +108,17 @@ export default function Navbar() {
                 <button
                     type="button"
                     onClick={() => setIsOpen(!isOpen)}
-                    className="group flex flex-col items-end gap-1.5 focus:outline-none relative z-50 bg-transparent border-0 cursor-pointer text-white"
+                    className="group flex items-center gap-3 focus:outline-none relative z-50 bg-transparent border-0 cursor-pointer text-white p-2 -mr-2 touch-manipulation"
+                    aria-label={isOpen ? "Tutup Menu" : "Buka Menu"}
                 >
                     <span className="sr-only">Toggle Menu</span>
-                    <div className="text-sm font-medium tracking-widest uppercase mb-1 hidden md:block">
+                    <div className="text-xs font-mono font-medium tracking-widest uppercase hidden md:block text-neutral-300 group-hover:text-white transition-colors">
                         {isOpen ? "Close" : "Menu"}
                     </div>
-                    <div className="w-8 flex flex-col gap-1.5 items-end">
+                    <div className="w-8 flex flex-col gap-1.5 items-end justify-center">
                         <span
                             className={`h-0.5 bg-white transition-all duration-300 ${
-                                isOpen ? "w-8 rotate-45 translate-y-2" : "w-8"
+                                isOpen ? "w-7 rotate-45 translate-y-2" : "w-7"
                             }`}
                         />
                         <span
@@ -109,7 +128,7 @@ export default function Navbar() {
                         />
                         <span
                             className={`h-0.5 bg-white transition-all duration-300 ${
-                                isOpen ? "w-8 -rotate-45 -translate-y-2" : "w-6"
+                                isOpen ? "w-7 -rotate-45 -translate-y-2" : "w-6"
                             }`}
                         />
                     </div>
@@ -123,7 +142,7 @@ export default function Navbar() {
                         animate={{ y: 0 }}
                         exit={{ y: "-100%" }}
                         transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
-                        className="fixed inset-0 bg-[#0a0a0a] text-[#ededed] z-40 flex flex-col justify-between p-6 md:p-12 pb-16 md:pb-12"
+                        className="fixed inset-0 bg-[#0a0a0a] text-[#ededed] z-40 flex flex-col justify-between p-6 md:p-12 pt-24 md:pt-28 pb-16 md:pb-12"
                     >
                         <div className="flex-1 flex flex-col justify-center items-center">
                             <div className="flex flex-col gap-6 text-center w-full max-w-2xl">
