@@ -2,7 +2,7 @@
 
 import { Canvas, useFrame } from "@react-three/fiber";
 import { useTexture, Float } from "@react-three/drei";
-import { useRef, useEffect, MutableRefObject } from "react";
+import { useRef, useEffect, MutableRefObject, Suspense } from "react";
 import * as THREE from "three";
 import { cn } from "@/lib/utils";
 
@@ -89,15 +89,17 @@ export default function Background3D({ className }: { className?: string }) {
                 <directionalLight position={[10, 10, 5]} intensity={1} />
                 <pointLight position={[-10, -10, -10]} color="orange" intensity={0.5} />
 
-                {STATIC_BEANS.map((bean, i) => (
-                    <Bean
-                        key={i}
-                        position={bean.position}
-                        rotation={bean.rotation}
-                        scale={bean.scale}
-                        activeRef={activeRef}
-                    />
-                ))}
+                <Suspense fallback={null}>
+                    {STATIC_BEANS.map((bean, i) => (
+                        <Bean
+                            key={i}
+                            position={bean.position}
+                            rotation={bean.rotation}
+                            scale={bean.scale}
+                            activeRef={activeRef}
+                        />
+                    ))}
+                </Suspense>
             </Canvas>
         </div>
     );
