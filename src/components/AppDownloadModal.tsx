@@ -50,14 +50,14 @@ export default function AppDownloadModal({ isOpen, onClose }: AppDownloadModalPr
     return createPortal(
         <AnimatePresence>
             {isOpen && (
-                <div className="fixed inset-0 z-[999] flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+                <div className="fixed inset-0 z-[9999] flex flex-col items-center justify-start sm:justify-center p-4 pt-20 pb-8 sm:p-6 overflow-y-auto">
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.2 }}
                         onClick={onClose}
-                        className="fixed inset-0 bg-black/85 backdrop-blur-md cursor-pointer z-[999]"
+                        className="fixed inset-0 bg-black/85 backdrop-blur-md cursor-pointer z-[9999]"
                     />
 
                     <motion.div
@@ -65,11 +65,11 @@ export default function AppDownloadModal({ isOpen, onClose }: AppDownloadModalPr
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.95, y: 20 }}
                         transition={{ duration: 0.25, ease: "easeOut" }}
-                        className="relative z-[1000] w-full max-w-2xl max-h-[85vh] overflow-y-auto bg-neutral-900 border border-white/15 rounded-2xl sm:rounded-3xl p-6 sm:p-10 shadow-2xl text-white my-auto"
+                        className="relative z-[10000] w-full max-w-2xl max-h-[82vh] overflow-y-auto bg-neutral-900 border border-white/15 rounded-2xl sm:rounded-3xl p-6 sm:p-10 shadow-2xl text-white my-auto sm:my-auto"
                     >
                         <div className="absolute top-0 right-0 w-96 h-96 bg-red-600/10 blur-[100px] rounded-full pointer-events-none" />
 
-                        <div className="sticky top-0 z-50 bg-neutral-900/95 backdrop-blur-md pb-4 pt-1 -mt-1 flex items-start justify-between gap-4 border-b border-white/5 mb-4">
+                        <div className="sticky top-0 z-50 bg-neutral-900/95 backdrop-blur-md pb-4 pt-2 -mt-2 flex items-start justify-between gap-4 border-b border-white/5 mb-4">
                             <div className="flex flex-wrap items-center gap-2">
                                 <span className="text-[11px] font-mono font-bold uppercase tracking-widest text-red-500 bg-red-950/50 border border-red-500/30 px-3 py-1 rounded-full">
                                     Aplikasi Resmi Kopi Ajoe

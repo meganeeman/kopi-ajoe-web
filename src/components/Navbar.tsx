@@ -79,7 +79,7 @@ export default function Navbar() {
                 animate={{ y: 0 }}
                 transition={{ duration: 0.8, ease: [0.76, 0, 0.24, 1] }}
                 className={cn(
-                    "fixed top-0 left-0 w-full z-50 px-6 md:px-12 flex justify-between items-center text-white transition-all duration-300",
+                    "fixed top-0 left-0 w-full z-40 px-6 md:px-12 flex justify-between items-center text-white transition-all duration-300",
                     isOpen
                         ? "bg-transparent py-5 md:py-6"
                         : "backdrop-blur-md bg-black/40 border-b border-white/10 shadow-lg shadow-black/20 py-4 md:py-5"
@@ -88,7 +88,7 @@ export default function Navbar() {
                 <button
                     type="button"
                     onClick={() => scrollToSection("hero")}
-                    className="text-2xl font-bold tracking-tighter uppercase relative z-50 bg-transparent border-0 cursor-pointer text-left text-white focus:outline-none"
+                    className="text-2xl font-bold tracking-tighter uppercase relative z-40 bg-transparent border-0 cursor-pointer text-left text-white focus:outline-none"
                 >
                     Kopi Ajoe
                 </button>
@@ -96,7 +96,7 @@ export default function Navbar() {
                 <button
                     type="button"
                     onClick={() => setIsOpen(!isOpen)}
-                    className="group flex items-center gap-3 focus:outline-none relative z-50 bg-transparent border-0 cursor-pointer text-white p-2 -mr-2 touch-manipulation"
+                    className="group flex items-center gap-3 focus:outline-none relative z-40 bg-transparent border-0 cursor-pointer text-white p-2 -mr-2 touch-manipulation"
                     aria-label={isOpen ? "Tutup Menu" : "Buka Menu"}
                 >
                     <span className="sr-only">Toggle Menu</span>
