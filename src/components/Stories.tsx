@@ -157,7 +157,7 @@ export default function Stories() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6, delay: i * 0.1 }}
-                        className="group relative rounded-2xl border border-white/10 bg-neutral-900/40 p-8 flex flex-col justify-between min-h-[300px] hover:border-red-500/50 hover:bg-neutral-900 transition-all duration-300 cursor-pointer"
+                        className="group relative rounded-2xl border border-white/10 bg-neutral-900/40 p-8 flex flex-col justify-between min-h-75 hover:border-red-500/50 hover:bg-neutral-900 transition-all duration-300 cursor-pointer"
                     >
                         <div>
                             <div className="flex items-center justify-between mb-6">
