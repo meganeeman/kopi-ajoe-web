@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { ArrowUpRight, MessageCircle, Smartphone, Apple, Play, Compass } from "lucide-react";
+import { ArrowUpRight, MessageCircle, Smartphone, Apple, Play, Compass, Download, TrendingUp } from "lucide-react";
 import { APP_CONFIG } from "@/config/appConfig";
 import { useDeviceDetection } from "@/hooks/useDeviceDetection";
 import AppDownloadModal from "./AppDownloadModal";
@@ -121,6 +121,53 @@ export default function CTA() {
                                 <span>Titik Gerobak Jalanan</span>
                             </a>
                         </div>
+
+                        <motion.div
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ duration: 0.6 }}
+                            className="mt-12 w-full max-w-2xl bg-neutral-950 text-white rounded-3xl p-6 sm:p-8 text-left shadow-2xl border border-neutral-800 relative overflow-hidden"
+                        >
+                            <div className="absolute top-0 right-0 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20" />
+                            <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
+                                <div className="space-y-2 max-w-md">
+                                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 text-[11px] font-mono uppercase tracking-wider font-semibold">
+                                        <TrendingUp className="w-3.5 h-3.5" />
+                                        <span>Peluang Kemitraan &amp; Investasi</span>
+                                    </div>
+                                    <h3 className="text-xl sm:text-2xl font-bold tracking-tight text-white">
+                                        Tertarik Menjadi Mitra Kopi Ajoe?
+                                    </h3>
+                                    <p className="text-neutral-400 text-xs sm:text-sm font-light leading-relaxed">
+                                        Pelajari skema bagi hasil, proyeksi balik modal (ROI), dan spesifikasi armada gerobak keliling listrik kami melalui proposal bisnis resmi.
+                                    </p>
+                                </div>
+
+                                <div className="flex flex-col sm:flex-row md:flex-col gap-3 shrink-0">
+                                    <motion.a
+                                        href="/proposal-bisnis-kopi-ajoe.pdf"
+                                        download="Proposal Bisnis Kopi Ajoe.pdf"
+                                        whileHover={{ scale: 1.03 }}
+                                        whileTap={{ scale: 0.97 }}
+                                        className="inline-flex items-center justify-center gap-2.5 px-6 py-3.5 rounded-full bg-amber-500 hover:bg-amber-400 text-neutral-950 font-semibold text-xs sm:text-sm uppercase tracking-wider shadow-lg transition-all text-center"
+                                    >
+                                        <Download className="w-4 h-4 stroke-[2.5]" />
+                                        <span>Unduh Proposal (PDF)</span>
+                                    </motion.a>
+
+                                    <a
+                                        href="https://wa.me/628212691657?text=Halo%20Admin%20Kopi%20Ajoe,%20saya%20tertarik%20untuk%20mengetahui%20lebih%20lanjut%20mengenai%20kemitraan%20Kopi%20Ajoe"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full border border-white/15 hover:border-white/30 text-neutral-300 hover:text-white text-xs font-mono uppercase tracking-wider transition-colors text-center"
+                                    >
+                                        <MessageCircle className="w-3.5 h-3.5 text-emerald-400" />
+                                        <span>Tanya via WhatsApp</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </motion.div>
                     </div>
                 </div>
             </section>

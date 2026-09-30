@@ -158,6 +158,15 @@ export default function Navbar() {
                                 ))}
 
                                 <div className="flex flex-wrap justify-center gap-3 pt-6">
+                                    <a
+                                        href="/proposal-bisnis-kopi-ajoe.pdf"
+                                        download="Proposal Bisnis Kopi Ajoe.pdf"
+                                        onClick={handleExternalNav}
+                                        className="px-4 py-2 rounded-full border border-amber-500/40 hover:border-amber-400 hover:text-amber-300 bg-amber-950/30 text-amber-400 text-xs font-mono uppercase tracking-wider transition-colors flex items-center gap-1.5"
+                                    >
+                                        <span>Proposal Bisnis</span>
+                                        <ArrowUpRight className="w-3.5 h-3.5" />
+                                    </a>
                                     <Link
                                         href="/privacy-policy"
                                         onClick={handleExternalNav}

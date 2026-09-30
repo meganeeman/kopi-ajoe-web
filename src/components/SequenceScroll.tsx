@@ -5,7 +5,7 @@ import { useEffect, useRef, useState, useCallback } from "react";
 import { cn } from "@/lib/utils";
 import Preloader from "./Preloader";
 
-const frameCount = 192;
+const frameCount = 240;
 
 interface StoryLineData {
     text: string;

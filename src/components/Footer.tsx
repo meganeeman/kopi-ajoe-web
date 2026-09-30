@@ -92,8 +92,18 @@ export default function Footer() {
                             </li>
                             <li>
                                 <a href="#stories" className="hover:text-white transition-colors flex items-center justify-between">
-                                    <span>Liputan & Berita</span>
+                                    <span>Liputan &amp; Berita</span>
                                     <ArrowUpRight className="w-3 h-3 text-neutral-600" />
+                                </a>
+                            </li>
+                            <li>
+                                <a
+                                    href="/proposal-bisnis-kopi-ajoe.pdf"
+                                    download="Proposal Bisnis Kopi Ajoe.pdf"
+                                    className="hover:text-amber-400 transition-colors flex items-center justify-between text-amber-400/90 font-medium pt-1"
+                                >
+                                    <span>Proposal Bisnis (PDF)</span>
+                                    <ArrowUpRight className="w-3 h-3 text-amber-400" />
                                 </a>
                             </li>
                         </ul>
